@@ -3,7 +3,13 @@
 //  Create a server
 
 const server = http.createServer((req, res) => {
-    console.log('Request made')
+    console.log(req.url, req.method)
+
+    // Set header Content type
+    res.setHeader('Content-Type', 'text/plain')
+    res.write('The Lord is Good')
+    res.end()
+
 })
 
 // Listen for request
