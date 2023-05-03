@@ -1,4 +1,5 @@
  const http = require('http')
+ const fs = require('fs')
 
 //  Create a server
 
@@ -6,9 +7,17 @@ const server = http.createServer((req, res) => {
     console.log(req.url, req.method)
 
     // Set header Content type
-    res.setHeader('Content-Type', 'text/plain')
-    res.write('The Lord is Good')
-    res.end()
+    res.setHeader('Content-Type', 'text/html')
+    
+    // send an html file
+    fs.readFile('./views/index.html', (err, data) => {
+        if(err){
+            console.log(err)
+        } else {
+            // res.write(data)
+            res.end(data)
+        }
+    })
 
 })
 
