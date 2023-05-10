@@ -1,5 +1,6 @@
 const Blog = require('../model/blogs')
 
+// show blog list
 const blog_index = (req, res) => {
     Blog.find().sort({ createdAt: -1 })
         .then((result) => {
@@ -10,6 +11,7 @@ const blog_index = (req, res) => {
         })
 }
 
+// blog details
 const blog_details = (req, res) => {
     const id = req.params.id
     
@@ -22,6 +24,7 @@ const blog_details = (req, res) => {
         })
 }
 
+// create new blog
 const blog_create_get = (req, res) => {
     res.render('blogs/create', {title: 'Create a new blog'})
 }
@@ -38,6 +41,7 @@ const blog_create_post = (req, res) => {
         })
 }
 
+// delete blog
 const blog_delete = (req, res) => {
     const id = req.params.id
 
